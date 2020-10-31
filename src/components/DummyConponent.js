@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext,useState } from "react";
 import { BookContext } from "../context/BookContext";
 
 const DummyConponent = () => {
@@ -9,9 +9,22 @@ const DummyConponent = () => {
     return <li key={eachBook.id}>{eachBook.title}</li>;
   });
 
+  //context data
+  const color1 = 'red';
+  const color2 = 'purple';
+
+  const toggleColor = (e) =>{
+    if(e.target.style.color === color1){
+      e.target.style.color = color2
+    }else{
+      e.target.style.color = color1
+    }
+  }
+
   return (
     <div>
-      <p>This is from DummyConponent</p>
+      <p style={{color:'red',fontSize:30}} onClick={e => toggleColor(e)}>This is from DummyConponent</p>
+
       <ul>{bookDataList}</ul>
     </div>
   );
